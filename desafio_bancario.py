@@ -40,7 +40,21 @@ while True:
 
     elif opcao == 1:
         print("Saque")
-
+        valor_a_sacar = float(input("Quanto você deseja sacar?"))
+        if numero_saques >= LIMITE_SAQUES:
+            print("Você excedeu o limite de saques diários!!")
+        elif valor_a_sacar > limite:
+            print(f"Você não pode sacar valores acima de R${limite:.2f}")
+        else:
+            if valor_a_sacar > saldo:
+                print("Saldo insuficiente")
+            else:
+                numero_saques += 1
+                saldo -= valor_a_sacar
+                print("Processando...")
+                sleep(1)
+                extrato += f"Valor Saque: -{valor_a_sacar:.2f}!\n"
+                print(f"Operação encerrada com Sucesso!")
 
     
     elif opcao == 2:
