@@ -24,6 +24,19 @@ while True:
 
     if opcao == 0:
         print("Depósito")
+        valor_depositado = float(input("Digite o valor a ser depositado: "))
+        if valor_depositado <= 0:
+           print("Valor Inválido")
+           sleep(1)
+        
+        elif valor_depositado > 0:
+            print("Processando...")
+            sleep(1)
+            print(f"Operação encerrada com Sucesso!")
+            saldo += valor_depositado
+            extrato += f"Valor depositado: {valor_depositado:.2f}\n"
+        else:
+            print("digite um valor válido")
 
     elif opcao == 1:
         print("Saque")
