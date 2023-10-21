@@ -34,33 +34,34 @@ while True:
             sleep(1)
             print(f"Operação encerrada com Sucesso!")
             saldo += valor_depositado
-            extrato += f"Valor depositado: {valor_depositado:.2f}\n"
+            extrato += f"Valor depositado: R${valor_depositado:.2f}\n"
         else:
             print("digite um valor válido")
 
     elif opcao == 1:
         print("Saque")
         valor_a_sacar = float(input("Quanto você deseja sacar?"))
+        
         if numero_saques >= LIMITE_SAQUES:
             print("Você excedeu o limite de saques diários!!")
         elif valor_a_sacar > limite:
             print(f"Você não pode sacar valores acima de R${limite:.2f}")
+        elif valor_a_sacar > saldo:
+            print("Saldo insuficiente")
+        elif valor_a_sacar < 0:
+            print("Operacao não permitida")
         else:
-            if valor_a_sacar > saldo:
-                print("Saldo insuficiente")
-            else:
-                numero_saques += 1
-                saldo -= valor_a_sacar
-                print("Processando...")
-                sleep(1)
-                extrato += f"Valor Saque: -{valor_a_sacar:.2f}!\n"
-                print(f"Operação encerrada com Sucesso!")
+            numero_saques += 1
+            saldo -= valor_a_sacar
+            print("Processando...")
+            sleep(1)
+            extrato += f"Valor Saque: -R${valor_a_sacar:.2f}!\n"
+            print(f"Operação encerrada com Sucesso!")
 
     
     elif opcao == 2:
         print("=================== Extrato ====================")
         print(extrato)
-
         print(f"Saldo Total:R${saldo:.2f}")
         print("================== FIM Extrato ===================")
 
