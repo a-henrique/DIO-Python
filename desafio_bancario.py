@@ -10,6 +10,7 @@ def menu():
     [1] Sacar
     [2] Extrato
     [3] Cadastrar Usuario
+    [4] Criar Conta
     [5] Sair 
 
     ==> Opção:"""
@@ -59,7 +60,7 @@ def exibir_extrato(saldo,/, *, extrato):
 
 def criar_usuario(usuarios):
     cpf = input("Informe o CPF do usuário (apenas números): ")
-    usuario = filtra_usuario(cpf, usuarios)
+    usuario = filtrar_usuario(cpf, usuarios)
 
     if usuario:
         print("\n=================================")
@@ -83,6 +84,16 @@ def filtrar_usuario(cpf, usuarios):
         else:
             filtrado = None
     return filtrado
+
+def criar_conta(agencia, numero_conta, usuarios):
+    cpf = input("Informe o cpf do usuario: ")
+    usuario = filtrar_usuario(cpf, usuarios)
+
+    if usuario:
+        print("\nConta criada com sucesso!")
+        return {"agencia": agencia, "numero_conta": numero_conta, "usuario": usuario}
+    
+    print("Usuário não foi encontrado, fim da criação")
 
 def main():
 
@@ -112,6 +123,12 @@ def main():
         
         elif opcao == 3:
             criar_usuario(usuarios)
+
+        elif opcao == 4:
+            numero_conta = len(contas)+1
+            conta = criar_conta(AGENCIA, numero_conta, usuarios)
+            if conta:
+                contas.append(conta)
 
         elif opcao == 5:
             print("bye")
