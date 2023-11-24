@@ -11,7 +11,8 @@ def menu():
     [2] Extrato
     [3] Cadastrar Usuario
     [4] Criar Conta
-    [5] Sair 
+    [5] Listar Contas
+    [6] Sair 
 
     ==> Opção:"""
 
@@ -95,6 +96,15 @@ def criar_conta(agencia, numero_conta, usuarios):
     
     print("Usuário não foi encontrado, fim da criação")
 
+def listar_contas(contas):
+    total = 0
+    for conta in contas:
+        print(f"Agencia: {conta['agencia']}, Conta: {conta['numero_conta']}, Usuario: {conta['usuario']}")
+        total += 1
+    print("=========================")
+    print(f"Total de Contas: {total}")
+    print("=========================")
+
 def main():
 
     saldo = 0
@@ -131,6 +141,9 @@ def main():
                 contas.append(conta)
 
         elif opcao == 5:
+            listar_contas(contas)
+
+        elif opcao == 6:
             print("bye")
             break
         else:
