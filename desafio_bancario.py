@@ -9,7 +9,8 @@ def menu():
     [0] Depositar
     [1] Sacar
     [2] Extrato
-    [3] Sair 
+    [3] Cadastrar Usuario
+    [5] Sair 
 
     ==> Opção:"""
 
@@ -56,6 +57,32 @@ def exibir_extrato(saldo,/, *, extrato):
     print(f"Saldo Total:R${saldo:.2f}")
     print("================== FIM Extrato ===================") 
 
+def criar_usuario(usuarios):
+    cpf = input("Informe o CPF do usuário (apenas números): ")
+    usuario = filtra_usuario(cpf, usuarios)
+
+    if usuario:
+        print("\n=================================")
+        print("Já existe um usuário com esse CPF")
+        print("=================================")
+        return
+    
+    nome = input("Informe o nome: ")
+    data_nascimento = input("Informe a dad de nascimento {dd-mm-aaaa}: ")
+    endereco = input("Informe o endereco (logradouro, rua - bairro - cidade/sigla estado): ")
+
+    usuarios.append({"nome": nome, "data_nascimento": data_nascimento, "cpf":cpf, "endereco":endereco})
+
+    print("usuario cadastrado")
+
+def filtra_usuario(cpf, usuarios):
+    filtrado = []
+    for usuario in usuarios:
+        if usuario["cpf"] == cpf:
+            filtrado = usuario["cpf"]
+        else:
+            filtrado = None
+    return filtrado
 
 def main():
 
@@ -79,9 +106,14 @@ def main():
         elif opcao == 1:
             valor_a_sacar = float(input("Informe quanto deseja sacar: "))
             saldo, extrato = sacar(saldo=saldo, valor_a_sacar=valor_a_sacar, extrato=extrato, limite=limite, numero_saques=numero_saques, LIMITE_SAQUES=LIMITE_SAQUES)
+        
         elif opcao == 2:
             exibir_extrato(saldo, extrato=extrato)
+        
         elif opcao == 3:
+            criar_usuario(usuarios)
+
+        elif opcao == 5:
             print("bye")
             break
         else:
