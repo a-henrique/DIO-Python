@@ -75,7 +75,7 @@ def criar_usuario(usuarios):
 
     print("usuario cadastrado")
 
-def filtra_usuario(cpf, usuarios):
+def filtrar_usuario(cpf, usuarios):
     filtrado = []
     for usuario in usuarios:
         if usuario["cpf"] == cpf:
