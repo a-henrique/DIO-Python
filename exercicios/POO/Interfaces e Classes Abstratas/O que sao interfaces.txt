@@ -1,0 +1,10 @@
+- Interfaces definem o que uma classe deve fazer.
+
+- é definir um contrato, onde são declarados os métodos e suas assinaturas.
+
+- Em Python define-se classes abstratas para criar contratos!!!!
+
+- Classes abstratas não podem ser instanciadas
+
+
+- Para criar contratos em Python usa-se classes abstratas e não interfaces.
